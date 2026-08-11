@@ -1,3 +1,4 @@
+namespace week06.EternalQuest;
 
 class ChecklistGoal : Goal
 {
@@ -51,12 +52,10 @@ class ChecklistGoal : Goal
         int timesCompleted = int.Parse(parts[4]);
         int targetCount = int.Parse(parts[5]);
         int bonus = int.Parse(parts[6]);
-        var goal = new ChecklistGoal(title, description, points, targetCount, bonus);
-        for (int i = 0; i < timesCompleted; i++)
+        var goal = new ChecklistGoal(title, description, points, targetCount, bonus)
         {
-            goal.RecordEvent();
-        }
-
+            _timesCompleted = timesCompleted
+        };
         return goal;
     }
 }

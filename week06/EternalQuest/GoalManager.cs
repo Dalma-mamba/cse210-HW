@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using System.IO;
+
+namespace week06.EternalQuest;
 
 class GoalManager
 {
@@ -49,13 +50,11 @@ class GoalManager
 
     public void Save(string filename)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using StreamWriter outputFile = new StreamWriter(filename);
+        outputFile.WriteLine(_score);
+        foreach (Goal goal in _goals)
         {
-            outputFile.WriteLine(_score);
-            foreach (Goal goal in _goals)
-            {
-                outputFile.WriteLine(goal.GetStringRepresentation());
-            }
+            outputFile.WriteLine(goal.GetStringRepresentation());
         }
     }
 
@@ -63,15 +62,13 @@ class GoalManager
     {
         if (!File.Exists(filename))
         {
-            Console.WriteLine($"File not found: {filename}");
-            return;
+            throw new FileNotFoundException("Save file not found.", filename);
         }
 
         string[] lines = File.ReadAllLines(filename);
         if (lines.Length == 0)
         {
-            Console.WriteLine("Save file is empty.");
-            return;
+            throw new InvalidDataException("Save file is empty.");
         }
 
         _goals.Clear();

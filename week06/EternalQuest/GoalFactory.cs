@@ -1,3 +1,4 @@
+namespace week06.EternalQuest;
 
 static class GoalFactory
 {

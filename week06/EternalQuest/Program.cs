@@ -1,8 +1,12 @@
 
+namespace week06.EternalQuest;
+
 class Program
 {
     static void Main(string[] args)
     {
+        // This version supports user-created goals, goal recording, persistent save/load,
+        // and progress tracking for simple, eternal, and checklist goals.
         GoalManager manager = new GoalManager();
         bool finished = false;
 

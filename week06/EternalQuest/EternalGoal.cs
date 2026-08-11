@@ -1,3 +1,4 @@
+namespace week06.EternalQuest;
 
 class EternalGoal : Goal
 {
@@ -33,12 +34,10 @@ class EternalGoal : Goal
         string description = Unescape(parts[2]);
         int points = int.Parse(parts[3]);
         int timesRecorded = int.Parse(parts[4]);
-        var goal = new EternalGoal(title, description, points);
-        for (int i = 0; i < timesRecorded; i++)
+        var goal = new EternalGoal(title, description, points)
         {
-            goal.RecordEvent();
-        }
-
+            _timesRecorded = timesRecorded
+        };
         return goal;
     }
 }

@@ -1,3 +1,4 @@
+namespace week06.EternalQuest;
 
 class SimpleGoal : Goal
 {
@@ -38,12 +39,10 @@ class SimpleGoal : Goal
         string description = Unescape(parts[2]);
         int points = int.Parse(parts[3]);
         bool completed = bool.Parse(parts[4]);
-        var goal = new SimpleGoal(title, description, points);
-        if (completed)
+        var goal = new SimpleGoal(title, description, points)
         {
-            goal.RecordEvent();
-        }
-
+            _completed = completed
+        };
         return goal;
     }
 }
